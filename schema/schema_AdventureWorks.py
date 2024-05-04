@@ -1,7 +1,7 @@
 from pandas import Timestamp
 from pandera import DataFrameSchema, Column, Check, Index, MultiIndex
 
-schema = DataFrameSchema(
+schema_Adventure_Works = DataFrameSchema(
     columns={
         "BusinessEntityID": Column(
             dtype="int64",
