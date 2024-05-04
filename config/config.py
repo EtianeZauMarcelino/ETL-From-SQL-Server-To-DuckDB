@@ -1,5 +1,7 @@
 import os
+
 from dotenv import load_dotenv
+
 
 def configuracoes():
     load_dotenv(r'env\.env')

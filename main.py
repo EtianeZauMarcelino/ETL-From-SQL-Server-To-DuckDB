@@ -1,9 +1,9 @@
 # Importar bibliotecas
-import pandas as pd
 import numpy as np
+import pandas as pd
 import pyodbc
-from app.etl import extract_from_sql_server
 
+from app.etl import extract_from_sql_server
 
 with open(r'sql\SELECT_PERSON.sql', 'r') as person:
     query_person = person.read()

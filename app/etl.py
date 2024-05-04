@@ -1,14 +1,14 @@
-# Importar bibliotecas
-import pandas as pd
-
-import numpy as np
-import pyodbc
-from config.config import configuracoes
-
-import pandera as pa
-
 # Ignore warnings
 import warnings
+
+# Importar bibliotecas
+import numpy as np
+import pandas as pd
+import pandera as pa
+import pyodbc
+
+from config.config import configuracoes
+
 warnings.filterwarnings("ignore")
 
 # Conexão com o server
