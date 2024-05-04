@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "etl from sql server to duckdb"
+version = "0.1.0"
+description = ""
+authors = ["Etiane Marcelino <etianezaumarcelino@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+taskipy = "^1.12.2"
+pandas = "^2.2.2"
+pyodbc = "^5.1.0"
+mkdocs = "^1.6.0"
+isort = "^5.13.2"
+black = "^24.4.2"
+pytest = "^8.2.0"
+mkdocs-mermaid2-plugin = "^1.1.1"
+mkdocs-material = "^9.5.21"
+mkdocstrings = "^0.25.0"
+
+
+[tool.taskipy.tasks]
+doc = "mkdocs serve"
+format = """
+isort .
+black .
+"""
+test = "pytest -v"
+run = """
+python3 app/main.py
+"""
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
