@@ -472,20 +472,6 @@ docs = ["mdx-gh-links (>=0.2)", "mkdocs (>=1.5)", "mkdocs-gen-files", "mkdocs-li
 testing = ["coverage", "pyyaml"]
 
 [[package]]
-name = "markdown-callouts"
-version = "0.4.0"
-description = "Markdown extension: a classier syntax for admonitions"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "markdown_callouts-0.4.0-py3-none-any.whl", hash = "sha256:ed0da38f29158d93116a0d0c6ecaf9df90b37e0d989b5337d678ee6e6d6550b7"},
-    {file = "markdown_callouts-0.4.0.tar.gz", hash = "sha256:7ed2c90486967058a73a547781121983839522d67041ae52c4979616f1b2b746"},
-]
-
-[package.dependencies]
-markdown = ">=3.3.3"
-
-[[package]]
 name = "markdown-it-py"
 version = "3.0.0"
 description = "Python port of markdown-it. Markdown parsing, done right!"
@@ -758,7 +744,6 @@ Markdown = ">=3.3"
 MarkupSafe = ">=1.1"
 mkdocs = ">=1.4"
 mkdocs-autorefs = ">=0.3.1"
-mkdocstrings-crystal = {version = ">=0.3.4", optional = true, markers = "extra == \"crystal\""}
 mkdocstrings-python = {version = ">=0.5.2", optional = true, markers = "extra == \"python\""}
 platformdirs = ">=2.2.0"
 pymdown-extensions = ">=6.3"
@@ -767,24 +752,6 @@ pymdown-extensions = ">=6.3"
 crystal = ["mkdocstrings-crystal (>=0.3.4)"]
 python = ["mkdocstrings-python (>=0.5.2)"]
 python-legacy = ["mkdocstrings-python-legacy (>=0.2.1)"]
-
-[[package]]
-name = "mkdocstrings-crystal"
-version = "0.3.7"
-description = "Crystal language doc generator for mkdocstrings"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "mkdocstrings_crystal-0.3.7-py3-none-any.whl", hash = "sha256:91f25700a1e13ee5157aa5875441d333830c392d5ace7ef1c2106d9e5b2883b6"},
-    {file = "mkdocstrings_crystal-0.3.7.tar.gz", hash = "sha256:6d0b2fc8ef1256aec2cc4ff22a7d5aff6398c574cede10a5941e5aa3590012c7"},
-]
-
-[package.dependencies]
-jinja2 = ">=2.11.2"
-markdown-callouts = ">=0.1.0"
-markupsafe = ">=1.1.1"
-mkdocs-autorefs = ">=0.3.1"
-mkdocstrings = ">=0.19.0"
 
 [[package]]
 name = "mkdocstrings-python"
@@ -2047,4 +2014,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "bced4c8d11948edc4097586534c55253e5b5940455acaabb7c90c6d08743b2ee"
+content-hash = "613fcc6076d01b7e901e79e705fa44a483c370472016c317e494b6d447e542b4"
