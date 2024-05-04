@@ -24,3 +24,10 @@ graph LR
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
+# Reference
+
+## ETL
+
+### Extract Function
+::: app.etl.extract_from_sql_server

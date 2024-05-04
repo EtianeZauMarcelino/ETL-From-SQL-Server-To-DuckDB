@@ -13,7 +13,23 @@ warnings.filterwarnings("ignore")
 
 # Conexão com o server
 def extract_from_sql_server(query: str) -> pd.DataFrame:
+    """
+    Extracts data from a SQL Server database using the provided query and returns it as a pandas DataFrame.
 
+    Parameters:
+    - query (str): SQL query to extract data from the SQL Server database.
+
+    Returns:
+    - pd.DataFrame: DataFrame containing the extracted data.
+
+    Raises:
+    - Exception: If there's an error during the extraction process.
+
+    Example:
+    ```
+    data = extract_from_sql_server("SELECT * FROM TableName")
+    ```
+    """
     config = configuracoes()
 
     try:
