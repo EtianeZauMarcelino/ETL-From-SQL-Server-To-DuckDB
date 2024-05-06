@@ -48,8 +48,8 @@ def extract_from_sql_server(query: str) -> pd.DataFrame:
 
         schema_AdventureWorks = pa.infer_schema(df_AdventureWorks)
 
-        with open(f'schema\schema_AdventureWorks.py', 'w', encoding='utf-8') as schema_file:
-            schema_file.write(schema_AdventureWorks.to_script())
+        with open(f'schema\schema_AdventureWorks.py', 'w', encoding='utf-8') as schema_Adventure_Works:
+            schema_Adventure_Works.write(schema_AdventureWorks.to_script())
 
     except Exception as error:
         sql_server_Connection.close()
