@@ -14,7 +14,7 @@ from config.config import configuracoes
 warnings.filterwarnings("ignore")
 
 # Conexão com o server
-@pa.check_output(schema_Adventure_Works)
+@pa.check_output(schema_Adventure_Works, lazy=True)
 def extract_from_sql_server_and_validate(query: str) -> pd.DataFrame:
     """
     
@@ -52,3 +52,54 @@ def extract_from_sql_server_and_validate(query: str) -> pd.DataFrame:
     return df_AdventureWorks
 
 
+
+import duckdb
+
+
+@pa.check_input(schema_Adventure_Works, lazy=True)
+def load_from_sql_server_to_duckdb(df: pd.DataFrame, table_name: str, db_file: str = 'From_SQL_Server.db'):
+    """
+    Carrega o DataFrame no DuckDB, criando ou substituindo a tabela especificada.
+
+    Args:
+        df: DataFrame do Pandas para ser carregado no DuckDB.
+        table_name: Nome da tabela no DuckDB onde os dados serão inseridos.
+        db_file: Caminho para o arquivo DuckDB. Se não existir, será criado.
+    """
+    # Conectar ao DuckDB. Se o arquivo não existir, ele será criado.
+    con = duckdb.connect(database=db_file, read_only=False)
+    
+    # Registrar o DataFrame como uma tabela temporária
+    con.register('df_from_sql_server', df)
+    
+    # Utilizar SQL para inserir os dados da tabela temporária em uma tabela permanente
+    # Se a tabela já existir, substitui.
+    con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM df_from_sql_server")
+    
+    # Fechar a conexão
+    con.close()
+
+
+
+def read_from_duckdb_and_show(table_name: str, db_file: str = 'From_SQL_Server.db'):
+    """
+    Lê dados de uma tabela DuckDB e imprime os resultados.
+
+    Parâmetros:
+    - table_name: Nome da tabela de onde os dados serão lidos.
+    - db_file: Caminho para o arquivo DuckDB.
+    """
+    # Conectar ao DuckDB
+    con = duckdb.connect(database=db_file)
+
+    # Executar consulta SQL
+    con.sql(f"""
+        SELECT * FROM {table_name} limit 10
+        """).show()
+
+    # Fechar a conexão
+    con.close()
+
+    # Imprimir os resultados
+    # for row in result:
+    #     print(row)

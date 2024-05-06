@@ -61,5 +61,3 @@ def extract_from_sql_server(query: str) -> pd.DataFrame:
         sql_server_Connection.close()
 
     return df_AdventureWorks
-
-
