@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#welcome-to-mkdocs">
+<a class="md-skip" href="#welcome-to-documentations-from-my-project">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Welcome to MkDocs
+              Welcome to documentations from my project:
             
           </span>
 </div>
@@ -99,11 +99,32 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Welcome to documentations from my project:
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href=".">
 <span class="md-ellipsis">
-    Welcome to MkDocs
+    Welcome to documentations from my project:
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#extract-from-sql-server-and-load-to-duckdb">
+<span class="md-ellipsis">
+      Extract from SQL Server and Load to DuckDB
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -114,32 +135,32 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#extract-from-sql-server-and-load-to-duckdb">
+<span class="md-ellipsis">
+      Extract from SQL Server and Load to DuckDB
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
+<h1 id="welcome-to-documentations-from-my-project">Welcome to documentations from my project:</h1>
+<h2 id="extract-from-sql-server-and-load-to-duckdb">Extract from SQL Server and Load to DuckDB</h2>
 <h1 id="diagramas">Diagramas</h1>
 <div class="mermaid">graph LR
     hello --&gt; world
-    world --&gt; again
-    again --&gt; hello
+
 </div>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
 <h1 id="reference">Reference</h1>
 <h2 id="etl">ETL</h2>
 <h3 id="extract-function">Extract Function</h3>
@@ -255,6 +276,54 @@ docs/
         <span class="n">sql_server_Connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">df_AdventureWorks</span>
+</code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<a id="app.extract_validation.read_from_duckdb_and_show"></a>
+<div class="doc doc-contents first">
+<p>Lê dados de uma tabela DuckDB e imprime os resultados.</p>
+<p>Parâmetros:
+- table_name: Nome da tabela de onde os dados serão lidos.
+- db_file: Caminho para o arquivo DuckDB.</p>
+<details class="quote">
+<summary>Source code in <code>app\extract_validation.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_from_duckdb_and_show</span><span class="p">(</span><span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'From_SQL_Server.db'</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Lê dados de uma tabela DuckDB e imprime os resultados.</span>
+
+<span class="sd">    Parâmetros:</span>
+<span class="sd">    - table_name: Nome da tabela de onde os dados serão lidos.</span>
+<span class="sd">    - db_file: Caminho para o arquivo DuckDB.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Conectar ao DuckDB</span>
+    <span class="n">con</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">db_file</span><span class="p">)</span>
+
+    <span class="c1"># Executar consulta SQL</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">        SELECT * FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> limit 10</span>
+<span class="s2">        """</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Fechar a conexão</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
