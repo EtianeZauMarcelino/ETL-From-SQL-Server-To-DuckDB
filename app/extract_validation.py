@@ -1,15 +1,15 @@
 # Ignore warnings
 import warnings
 
+import duckdb
 # Importar bibliotecas
 import numpy as np
 import pandas as pd
 import pandera as pa
 import pyodbc
 
-from schema.schema_AdventureWorks import schema_Adventure_Works
-
 from config.config import configuracoes
+from schema.schema_AdventureWorks import schema_Adventure_Works
 
 warnings.filterwarnings("ignore")
 
@@ -53,7 +53,7 @@ def extract_from_sql_server_and_validate(query: str) -> pd.DataFrame:
 
 
 
-import duckdb
+
 
 
 @pa.check_input(schema_Adventure_Works, lazy=True)

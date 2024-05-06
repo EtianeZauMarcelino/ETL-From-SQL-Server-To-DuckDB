@@ -1,14 +1,14 @@
 # Importar bibliotecas
+import duckdb
 import numpy as np
 import pandas as pd
-import pyodbc
 import pandera as pa
-import duckdb
+import pyodbc
 
 from app.etl import extract_from_sql_server
-from app.extract_validation import extract_from_sql_server_and_validate
-from app.extract_validation import load_from_sql_server_to_duckdb, read_from_duckdb_and_print
-
+from app.extract_validation import (extract_from_sql_server_and_validate,
+                                    load_from_sql_server_to_duckdb,
+                                    read_from_duckdb_and_print)
 
 with open(r'sql\SELECT_PERSON.sql', 'r') as person:
     query_person = person.read()
